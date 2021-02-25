@@ -1,6 +1,9 @@
 const main = document.querySelector("main")
 let hours = 0, minutes = 0, seconds = 0;
 
+function paintTime() {
+  main.innerText = `${addZero(hours)}:${addZero(minutes)}:${addZero(seconds)}`;
+}
 function addZero(text) {
   return text = text < 10 ? `0${text}` : text;
 }
@@ -15,7 +18,7 @@ function askTime() {
   while (seconds >= 60) {
     seconds = prompt("seconds");
   }
-  main.innerText = `${addZero(hours)}:${addZero(minutes)}:${addZero(seconds)}`;
+  paintTime();
 }
 
 function goTimer() {
@@ -28,9 +31,10 @@ function goTimer() {
   }
 
 }
-main.innerText = `${addZero(hours)}:${addZero(minutes)}:${addZero(seconds)}`;
+paintTime();
 
 function init() {
+  paintTime();
   askTime();
   while (seconds > 0 || minutes > 0 || hours > 0) {
     setInterval(goTimer, 1000);
